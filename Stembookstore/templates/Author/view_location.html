@@ -1,0 +1,119 @@
+
+{%load static%}
+
+ <head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Fashi Template">
+    <meta name="keywords" content="Fashi, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   
+
+     <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+
+     <!-- Css Styles -->
+    <link rel="stylesheet" href="{% static 'css/css/bootstrap.min.css'%}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/css/font-awesome.min.css'%}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/css/themify-icons.css'%}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/css/elegant-icons.css'%}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/css/owl.carousel.min.css'%}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/css/nice-select.css'%}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/css/jquery-ui.min.css'%}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/css/slicknav.min.css'%}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/css/style.css'%}" type="text/css">
+
+
+
+    
+</head>
+
+<body>
+    <!-- Page Preloder -->
+    {% comment %} <div id="preloder">
+        <div class="loader"></div>
+    </div>   {% endcomment %}
+
+    <!-- Header Section Begin -->
+    <header class="header-section">
+        <div class="header-top">
+            <div class="container">
+                <div class="ht-left">
+                    <div class="mail-service">
+                        <i class=" fa fa-envelope"></i>
+                        infinityreads.stem@gmail.com
+                    </div>
+                    <div class="phone-service">
+                        <i class=" fa fa-phone"></i>
+                        +91 86593 77777
+                    </div>
+                </div>
+                <div class="ht-right">
+                    <a href="/login" class="login-panel"><i class="fa fa-user"></i>Logout</a>
+                    
+                    <div class="top-social">
+                        <a href="#"><i class="ti-facebook"></i></a>
+                        <a href="#"><i class="ti-twitter-alt"></i></a>
+                        <a href="#"><i class="ti-linkedin"></i></a>
+                        <a href="#"><i class="ti-pinterest"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+       <div>
+        <section class="hero-section">
+            <div class="hero-items owl-carousel">
+                <div class="single-hero-items set-bg" data-setbg="{%static 'css/img/book.jpg'%} ">
+                    
+                </div>
+        
+            
+        
+                <div class="single-hero-items set-bg" data-setbg="{%static 'css/img/bookf.jpg'%}">
+                   
+                </div>
+        
+        
+            </div>
+        </section>
+    </div>
+    </header>
+    <!-- Header End -->  
+<!-- Register Section Begin -->
+<div class="register-login-section spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 offset-lg-3">
+                <div class="login-form">
+                    <h2>Location</h2>
+                    
+                    
+                        <div>
+                            <ul>
+                                {%for l in location%} 
+                                <form action="{% url 'bylocation' l.LocationId %}" method="POST" >
+                                    {%csrf_token%}
+                                
+                                    <li class="quick-view">{{l.Location}}</li>
+                                   
+                                <button type="submit" class="site-btn place-btn">Submit</button>
+                                </form>
+                                {%endfor%}
+                            </ul>
+                            
+                            
+                          
+                        </div>   <br>
+                       
+                        
+                       
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{%include "Customer/footer.html"%}
+<!-- Register Form Section End -->
+

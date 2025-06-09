@@ -1,0 +1,37 @@
+{%load static%}
+{%include 'Admin/header.html'%}
+<!-- Register Section Begin -->
+<div class="register-login-section spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 offset-lg-3">
+                <div class="login-form">
+                    <h2>Location</h2>
+                    <form action="{%url 'location'%}"method="POST">
+                        {% csrf_token %}
+                        <div class="group-input">
+                            <select class="language_drop" id="pass" name="district">
+                                <option value='0' data-image="img/flag-1.jpg" data-imagecss="flag yt"
+                                    data-title="English">Choose District</option>
+                                    {% for i in District %}
+                                        <option value="{{i.DistrictId}}">{{i.District}}</option>
+                                    {%endfor%}
+                            </select>
+                            </div>
+                        <div class="group-input">
+                            <label for="username">Location</label>
+                            <input type="text" id="location" name="txt_location"
+                            placeholder="Enter location" required 
+                            pattern="^[A-Za-z\s]+$"
+                            title="Only letters and spaces allowed" >
+                        </div>
+                        
+                        <button type="submit" class="site-btn login-btn">Register</button>
+                    </form>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Register Form Section End -->

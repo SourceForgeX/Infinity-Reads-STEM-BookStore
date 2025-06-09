@@ -1,0 +1,23 @@
+{%load static%}
+{% include "Author/header.html" %}
+<body>
+    <h2>Customers List</h2>
+    <ul>
+        {% for customer in customer_list %}
+            <li>{{ customer }}</li>
+        {% empty %}
+            <li>No customers found</li>
+        {% endfor %}
+    </ul>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+</body>
+{% include "Customer/footer.html" %}

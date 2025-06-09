@@ -1,0 +1,200 @@
+{% load static %}
+{% include "Customer/header.html" %}
+
+
+    <style>
+        .modal-header {
+            background-color:black;
+            color: white;
+        }
+        .modal-footer {
+            justify-content: space-between;
+        }
+        .modal-header.bg-success {
+            background-color: black !important;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- Single Page Header Start -->
+    <div class="container-fluid page-header py-5">
+        <h1 class="text-center text-white display-6">Order History</h1>
+        <ol class="breadcrumb justify-content-center mb-0">
+            {% comment %} <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
+            {% endcomment %}
+            <span>Order History</span>
+        </ol>
+    </div>
+    <!-- Single Page Header End -->
+
+    <!-- Order History Table Start -->
+    <div class="container-fluid py-5">
+        <div class="container py-5">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                           
+                            <th scope="col">Book Name</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Feedback</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for book in books %}
+                        <tr data-product-id="{{ book.Bid }}">
+                           
+                            <td class="align-middle">{{ book.BookName}}</td>
+                            <td class="align-middle">{{ book.price }} ₹</td>
+                            <td class="align-middle">
+                                <button  class="site-btn place-btn feedback-btn" 
+                                    data-bs-toggle="modal" 
+                                    data-bs-target="#feedbackModal"
+                                    data-book-name="{{ book.BookName }}">
+                                    Feedback
+                                </button>
+                            </td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="7" class="text-center">No paid orders found.</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- Order History Table End -->
+
+    <!-- Feedback Modal -->
+    <div class="modal fade" id="feedbackModal" tabindex="-1" aria-labelledby="feedbackModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-success text-white" style="bgcolor:black">
+                    <h5 class="modal-title" id="feedbackModalLabel">Feedback</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="{%url 'feedback' %}" method='POST'class="comment-form">
+                
+                    {% csrf_token %}
+                    <div class="modal-body p-4">
+                        <h4 class="fw-bold text-center mb-3">Your Feedback Matters!</h4>
+                        
+                        <label class="fw-bold mt-2"></label>
+                        <div class="rating">
+                            <input type="radio" id="star5" name="rating" value="5" />
+                            <label for="star5" title="5 stars">&#9733;</label>
+                            <input type="radio" id="star4" name="rating" value="4" />
+                            <label for="star4" title="4 stars">&#9733;</label>
+                            <input type="radio" id="star3" name="rating" value="3" />
+                            <label for="star3" title="3 stars">&#9733;</label>
+                            <input type="radio" id="star2" name="rating" value="2" />
+                            <label for="star2" title="2 stars">&#9733;</label>
+                            <input type="radio" id="star1" name="rating" value="1" />
+                            <label for="star1" title="1 star">&#9733;</label>
+                        </div>
+                
+                        <label class="fw-bold mt-3">Your Feedback:</label>
+                        <textarea class="form-control rounded shadow-sm p-2" name="feedback" rows="4" placeholder="Write your thoughts here..." required></textarea>
+                        
+                        <input type="hidden" name="BookName" id="modal_book_name">
+                    </div>
+                
+                    <div class="modal-footer justify-content-center">
+                        <button type="submit" class=" site-btn place-btn">Submit</button>
+                        <button type="button"  class="site-btn place-btn" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </form>
+                
+                
+                
+                
+            </div>
+        </div>
+    </div>
+    <!-- Feedback Modal End -->
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let feedbackButtons = document.querySelectorAll(".feedback-btn");
+    
+            feedbackButtons.forEach(button => {
+                button.addEventListener("click", function () {
+                    const bookName = this.getAttribute("data-book-name");
+                    document.getElementById("modal_book_name").value = bookName;
+                });
+            });
+        });
+    </script>
+    
+
+    {% include "Customer/footer.html" %}
+</body>
+</html>
+
+
+
+
+<style>
+    .modal-body {
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .rating {
+        direction: rtl;
+        display: flex;
+        justify-content: center;
+        gap: 5px;
+        margin-top: 5px;
+    }
+
+    .rating input {
+        display: none;
+    }
+
+    .rating label {
+        font-size: 32px;
+        color: #ccc;
+        cursor: pointer;
+        transition: transform 0.2s ease-in-out;
+    }
+
+    .rating input:checked ~ label,
+    .rating label:hover,
+    .rating label:hover ~ label {
+        color: #f5b301;
+        transform: scale(1.1);
+    }
+
+    .btn-success {
+        background-color:rgb(26, 26, 26);
+        border: none;
+        font-size: 16px;
+        border-radius: 5px;
+        transition: 0.3s ease;
+    }
+
+    .btn-success:hover {
+        background-color:rgb(21, 22, 21);
+    }
+
+    .btn-secondary {
+        background-color:rgb(18, 18, 19);
+        border: none;
+        font-size: 16px;
+        border-radius: 5px;
+        transition: 0.3s ease;
+    }
+
+    .btn-secondary:hover {
+        background-color: #5a6268;
+    }
+</style>

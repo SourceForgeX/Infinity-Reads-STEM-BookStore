@@ -1,0 +1,40 @@
+
+{%load static%}
+{%include "Author/header.html"%}
+<!-- Register Section Begin -->
+<div class="register-login-section spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 offset-lg-3">
+                <div class="login-form">
+                    <h2>District</h2>
+                    
+                    
+                        <div>
+                            <ul>
+                                {%for c in District%} 
+                                <form action="{% url 'bydistrict' c.DistrictId %}" method="POST" >
+                                    {%csrf_token%}
+                                
+                                <li class="quick-view"><a href="{% url 'bydistrict' c.DistrictId %}">{{c.District}}</a></li>
+                                <button type="submit" class="site-btn place-btn">Submit</button>
+                                </form>
+                                {%endfor%}
+                            </ul>
+                            
+                          
+                        </div>   <br>
+                       
+                        
+                        {% comment %} <button type="submit" class="site-btn login-btn">Submit</button> {% endcomment %}
+                   
+                   
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{%include "Customer/footer.html"%}
+<!-- Register Form Section End -->
+

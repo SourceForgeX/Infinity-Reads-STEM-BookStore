@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+{%load static%}
+{% include "Admin/header.html" %}
+
+<section class="hero-section">
+    <div class="hero-items owl-carousel">
+        <div class="single-hero-items set-bg" data-setbg="{%static 'css/img/book.jpg'%} ">
+            
+        </div>
+
+    
+
+        <div class="single-hero-items set-bg" data-setbg="{%static 'css/img/bookf.jpg'%}">
+           
+        </div>
+
+
+    </div>
+</section>
+<!-- Hero Section End -->
+
+    <!-- Hero Section End -->
+
+    {% comment %} <a href="{% url 'export_excel' %}">Export to Excel</a> {% endcomment %}
+
+    <!-- Banner Section Begin -->
+    <div class="banner-section spad">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="single-banner">
+                        <img src="{% static 'images/THESCIENCEOFSUPERCARS.jpg'%}"style=" height: 400px; "alt="">
+                        <div class="inner-text">
+                            <h4>Science</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="single-banner">
+                        <img src="{% static 'images/INFORMATIONTECHNOLOGYAnIntroductionforToday’sDigitalWorld.jpg' %}" style=" height: 400px; "alt="">
+                        <div class="inner-text">
+                            <h4>Technology</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="single-banner">
+                        <img src="{% static 'images/ModernSoftwareEngineeringAnEngineeringDisciplineforSoftwareintheAgeofAgile Developmentand ContinuousDelivery.jpg'%}" style=" height: 400px; "alt="">
+                        <div class="inner-text">
+                            <h4>Engineering</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="single-banner">
+                        <img src="{% static 'images/LANGUAGEOFMATHEMATICS.jpg'%}" style=" height: 400px; "alt="">
+                        <div class="inner-text">
+                            <h4>Mathematics</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Banner Section End -->
+
+    <!-- BestSellers Banner Section Begin -->
+    <section class="women-banner spad">
+        <div class="container-fluid">
+           
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title">
+                        <h2>Best Sellers</h2>
+                    </div>
+                </div>
+            </div>
+                       
+                </div>
+               
+                    <div class="product-slider owl-carousel">
+                        <div class="product-item">
+                            <div class="pi-pic">
+                                <img src="{% static 'images/CloudComputingConcepts,Technology,Security &Architecture,2nd Edition- Pearson.jpg'%}" style="width: 200px; height: 300px;" alt="">
+                                <div class="sale">Sale</div>
+                                <div class="icon">
+                                    <i class="icon_heart_alt"></i>
+                                </div>
+                                <ul>
+                                    <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
+                                    <li class="quick-view"><a href="#">+ Quick View</a></li>
+                                    <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="pi-text">
+                                <div class="catagory-name">Technology</div>
+                                <a href="#">
+                                    <h5>CloudComputingConcepts,Technology,Security &Architecture</h5>
+                                </a>
+                                <div class="product-price">
+                                    $14.00
+                                    <span>$35.00</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-item">
+                            <div class="pi-pic">
+                                <img src="{% static 'images/TheConcise OxfordDictionary ofMathematics.jpg'%}"  style="width: 200px; height: 300px;"alt="">
+                                <div class="icon">
+                                    <i class="icon_heart_alt"></i>
+                                </div>
+                                <ul>
+                                    <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
+                                    <li class="quick-view"><a href="#">+ Quick View</a></li>
+                                    <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="pi-text">
+                                <div class="catagory-name">Mathematics</div>
+                                <a href="#">
+                                    <h5>TheConcise OxfordDictionary ofMathematics</h5>
+                                </a>
+                                <div class="product-price">
+                                    $13.00
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-item">
+                            <div class="pi-pic">
+                                <img src="{% static 'images/AIEngineeringBuildingApplicationswithFoundationsModels.jpg'%}" style="width: 200px; height: 300px;" alt="">
+                                <div class="icon">
+                                    <i class="icon_heart_alt"></i>
+                                </div>
+                                <ul>
+                                    <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
+                                    <li class="quick-view"><a href="#">+ Quick View</a></li>
+                                    <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="pi-text">
+                                <div class="catagory-name">Engineering</div>
+                                <a href="#">
+                                    <h5>AIEngineering Building Applications with Foundations Models</h5>
+                                </a>
+                                <div class="product-price">
+                                    $34.00
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-item">
+                            <div class="pi-pic">
+                                <img src="{% static 'images/THESCIENCEOFSUPERCARS.jpg'%}" style="width: 200px; height: 300px;" alt="">
+                                <div class="icon">
+                                    <i class="icon_heart_alt"></i>
+                                </div>
+                                <ul>
+                                    <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
+                                    <li class="quick-view"><a href="#">+ Quick View</a></li>
+                                    <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="pi-text">
+                                <div class="catagory-name">SCIENCE</div>
+                                <a href="#">
+                                    <h5>THESCIENCEOFSUPERCARS</h5>
+                                </a>
+                                <div class="product-price">
+                                    $34.00
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- BestSellers Banner Section End -->
+
+    
+<!-- Second Hand Books Banner Section Begin -->
+    <section class="women-banner spad">
+        <div class="container-fluid">
+           
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title">
+                        <h2>Second Hand Books</h2>
+                    </div>
+                </div>
+            </div>
+                       
+                </div>
+               
+                    <div class="product-slider owl-carousel">
+                        <div class="product-item">
+                            <div class="pi-pic">
+                                <img src="{% static 'images/ModernElectric HybridElectric& FuelCellVehicles.jpg'%}" style="width: 200px; height: 300px;" alt="">
+                                <div class="sale">Second Hand Books</div>
+                                <div class="icon">
+                                    <i class="icon_heart_alt"></i>
+                                </div>
+                                <ul>
+                                    <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
+                                    <li class="quick-view"><a href="#">+ Quick View</a></li>
+                                    <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="pi-text">
+                                <div class="catagory-name">Engineering</div>
+                                <a href="#">
+                                    <h5>Modern Electric Hybrid Electric & Fuel Cell Vehicles</h5>
+                                </a>
+                                <div class="product-price">
+                                    $14.00
+                                    <span>$35.00</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-item">
+                            <div class="pi-pic">
+                                <img src="{% static 'images/DiscreteMathematicsandItsApplication(SIE)8thEdition.jpg'%}"  style="width: 200px; height: 300px;"alt="">
+                                <div class="icon">
+                                    <i class="icon_heart_alt"></i>
+                                </div>
+                                <ul>
+                                    <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
+                                    <li class="quick-view"><a href="#">+ Quick View</a></li>
+                                    <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="pi-text">
+                                <div class="catagory-name">Mathematics</div>
+                                <a href="#">
+                                    <h5>DiscreteMathematicsandItsApplication</h5>
+                                </a>
+                                <div class="product-price">
+                                    $13.00
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-item">
+                            <div class="pi-pic">
+                                <img src="{% static 'images/Competinginthe AgeofAIStrategy andLeadership WhenAlgorithms andNetworksRunthe World.jpg'%}" style="width: 200px; height: 300px;" alt="">
+                                <div class="icon">
+                                    <i class="icon_heart_alt"></i>
+                                </div>
+                                <ul>
+                                    <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
+                                    <li class="quick-view"><a href="#">+ Quick View</a></li>
+                                    <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="pi-text">
+                                <div class="catagory-name">Technology</div>
+                                <a href="#">
+                                    <h5>Competing in the Age of  AI Strategy and Leadership</h5>
+                                </a>
+                                <div class="product-price">
+                                    $34.00
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-item">
+                            <div class="pi-pic">
+                                <img src="{% static 'images/IntroductiontoLargeLanguageModels GenerativeAI forText.jpg'%}" style="width: 200px; height: 300px;" alt="">
+                                <div class="icon">
+                                    <i class="icon_heart_alt"></i>
+                                </div>
+                                <ul>
+                                    <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
+                                    <li class="quick-view"><a href="#">+ Quick View</a></li>
+                                    <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="pi-text">
+                                <div class="catagory-name">Technology</div>
+                                <a href="#">
+                                    <h5>Introduction to Large Language Models Generative AI for Text</h5>
+                                </a>
+                                <div class="product-price">
+                                    $34.00
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--Second Hand Books Banner Section End -->
+
+   
+
+    <!-- Latest Blog Section Begin -->
+    <section class="latest-blog spad">
+       
+           
+            <div class="benefit-items">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="single-benefit">
+                            <div class="sb-icon">
+                                <img src="{% static 'css/img/icon-1.png'%}" alt="">
+                            </div>
+                            <div class="sb-text">
+                                <h6>Free Shipping</h6>
+                                <p>For all order over 99$</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="single-benefit">
+                            <div class="sb-icon">
+                                <img src="{% static 'css/img/icon-2.png'%}" alt="">
+                            </div>
+                            <div class="sb-text">
+                                <h6>Delivery On Time</h6>
+                                <p>If good have prolems</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="single-benefit">
+                            <div class="sb-icon">
+                                <img src="{% static 'css/img/icon-1.png'%}" alt="">
+                            </div>
+                            <div class="sb-text">
+                                <h6>Secure Payment</h6>
+                                <p>100% secure payment</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Latest Blog Section End -->
+
+    <!-- Partner Logo Section Begin -->
+    <div class="partner-logo">
+        <div class="container">
+            <div class="logo-carousel owl-carousel">
+                <div class="logo-item">
+                    <div class="tablecell-inner">
+                        <img src="{% static 'css/img/logo-carousel/logo-1.png'%}" alt="">
+                    </div>
+                </div>
+                <div class="logo-item">
+                    <div class="tablecell-inner">
+                        <img src="{% static 'css/img/logo-carousel/logo-2.png'%}" alt="">
+                    </div>
+                </div>
+                <div class="logo-item">
+                    <div class="tablecell-inner">
+                        <img src="{% static 'css/img/logo-carousel/logo-3.png'%}" alt="">
+                    </div>
+                </div>
+                <div class="logo-item">
+                    <div class="tablecell-inner">
+                        <img src="{% static 'css/img/logo-carousel/logo-4.png'%}" alt="">
+                    </div>
+                </div>
+                <div class="logo-item">
+                    <div class="tablecell-inner">
+                        <img src="{% static 'css/img/logo-carousel/logo-5.png'%}" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Partner Logo Section End -->
+
+{%include "Customer/footer.html"%}
+</html> 

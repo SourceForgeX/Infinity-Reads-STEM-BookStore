@@ -1,0 +1,34 @@
+{%load static%}
+{%include 'Admin/header.html'%}
+<!-- Register Section Begin -->
+<div class="register-login-section spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 offset-lg-3">
+                <div class="login-form">
+                    <h2>SubCategory</h2>
+                    <form action="{%url 'subcategoryView'%}"method="POST">
+                        {% csrf_token %}
+                        
+                        <div class="group-input">
+                            <select class="form-control" id="pass" name="category">
+                                <option value='0' >Choose Category</option>
+                                    {% for i in Category %}
+                                        <option value="{{i.CategoryId}}">{{i.Category}}</option>
+                                    {%endfor%}
+                            </select>
+                            </div>
+                        <div class="group-input">
+                            <label for="sub_Category">Sub_Category</label>
+                            <input type="text" id="sub_Category" name="txt_subCategory">
+                        </div>
+                        
+                        <button type="submit" class="site-btn login-btn">Register</button>
+                    </form>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Register Form Section End -->

@@ -1,0 +1,22 @@
+{%load static%}
+{%include 'Customer/header.html'%}
+
+      
+
+
+
+<div class="row" style="background-color: rgb(227, 231, 233);padding-top: 10px; padding-bottom: 10px;">
+    {% for data in dataset %}
+    <div class="column" style="width: 18rem; text-align: center;display: inline-block; margin-left:30px ;" >
+        <a href="{%url 'Bookdetails' id=data.Bid%}"> <img src="{{ data.Bookimg.url }} "style="height =200px; width=200px" class="card-img-top" alt="..."></a>
+       
+        <div class="card-body">
+            
+            {% comment %} <p class="card-text"> <a href="{% url 'view_details' data.TextId %}"> {% endcomment %}
+            <h6>{{ data.Author }}</h6>
+            <h6>{{ data.price }}</h6>
+          
+        </div>
+    </div>
+    {% endfor %}
+</div>

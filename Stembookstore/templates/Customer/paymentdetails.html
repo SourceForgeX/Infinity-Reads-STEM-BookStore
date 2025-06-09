@@ -1,0 +1,39 @@
+               
+{%load static%}
+{%include 'Customer/header.html'%}
+
+<div class="place-order">
+    <h4>Your Order has been completed successfully</h4>
+    <div class="order-total">
+        <ul class="order-table">
+            
+                   <table class="table table-bordered table-condensed">
+                                <tr>
+                           
+                               
+                               
+                               <tr><th>Card No</th><td><input type="label" name="cardno" placeholder="{{payment.CardNo}}" readonly></td></tr>
+                                  <tr><th>Card Name</th><td><input type="text" name="cardname" placeholder="{{payment.CardName}}" readonly></td></tr>
+                               <tr><th>CVV</th><td><input type="number" name="cvv" placeholder="{{payment.CVV}}"readonly></td></tr>
+                       <tr><th>Delivery address</th><td><textarea name="Deliveryaddress" placeholder="{{payment.Deliveryaddress}}" readonly></textarea></td></tr>
+                            
+                 
+                            </tr>
+                 
+                            </table><br/>
+                 
+                      
+        </ul>
+        
+        {% comment %} <div class="order-btn">
+            <button type="submit" class="site-btn place-btn">Place Order</button>
+        </div> {% endcomment %}
+    </div>
+
+
+
+
+
+
+
+ {%include 'Customer/footer.html'%}

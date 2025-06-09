@@ -1,0 +1,39 @@
+{%load static%}
+{% include "Author/header.html" %}
+<h4 style="text-align: center;">Payment Details</h4>
+{% if dataset %}
+    <table border="1">
+        <tr>
+            <th style="text-align: center;">Book Title</th>
+            <th>Price</th>
+            <th>Books</th>
+            <th>Sold Out</th>
+          
+        </tr>
+        {% for book in dataset %}
+    
+        <tr>
+            <td>{{ book.BookName }}</td>
+            <td>{{ book.price }}</td>
+            <td>{{ book.numberofbooks }}</td>
+            <td>{{ book.total_sales }}</td>
+       
+           
+        </tr>
+        {% endfor %}
+    </table>
+{% else %}
+    <p>No payments found for this author.</p>
+{% endif %}
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+{% include "Customer/footer.html" %}

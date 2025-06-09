@@ -1,0 +1,104 @@
+{%load static%}
+
+ <head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Fashi Template">
+    <meta name="keywords" content="Fashi, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Fashi | Template</title>
+
+     <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+
+     <!-- Css Styles -->
+    <link rel="stylesheet" href="{% static 'css/css/bootstrap.min.css'%}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/css/font-awesome.min.css'%}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/css/themify-icons.css'%}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/css/elegant-icons.css'%}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/css/owl.carousel.min.css'%}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/css/nice-select.css'%}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/css/jquery-ui.min.css'%}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/css/slicknav.min.css'%}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/css/style.css'%}" type="text/css">
+</head>
+
+<body>
+    <!-- Page Preloder -->
+    {% comment %} <div id="preloder">
+        <div class="loader"></div>
+    </div>   {% endcomment %}
+
+    <!-- Header Section Begin -->
+    <header class="header-section">
+        <div class="header-top">
+            <div class="container">
+                <div class="ht-left">
+                    <div class="mail-service">
+                        <i class=" fa fa-envelope"></i>
+                        infinityreads.stem@gmail.com
+                    </div>
+                    <div class="phone-service">
+                        <i class=" fa fa-phone"></i>
+                        +91 86593 77777
+                    </div>
+                </div>
+                <div class="ht-right">
+                    <a href="/login" class="login-panel"><i class="fa fa-user"></i>Logout</a>
+                    
+                    <div class="top-social">
+                        <a href="#"><i class="ti-facebook"></i></a>
+                        <a href="#"><i class="ti-twitter-alt"></i></a>
+                        <a href="#"><i class="ti-linkedin"></i></a>
+                        <a href="#"><i class="ti-pinterest"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+        <div class="nav-item">
+            <div class="container">
+                
+                <nav class="nav-menu mobile-menu">
+                    <ul>
+                        <li class="active"><a href="/adminindex">Home</a></li>
+                       
+                        <li><a href="#">Books</a>
+                            <ul class="dropdown">
+                                <li><a href="/list_book">Text Books</a></li>
+                                
+                                <li><a href="/listsecond">Seccond Hand Book</a></li>
+                              
+                               
+                            </ul>
+                        </li>
+                        <li><a href="#">Approvals</a>
+                        <ul class="dropdown">
+                        <li><a href="/statususer">Author</a></li>
+                        <li><a href="/statusbook">Book</a></li>
+                        
+                        </ul>
+                        <li><a href="#">Register</a>
+                            <ul class="dropdown">
+                            <li><a href="./district">District</a></li>
+                            <li><a href="./location">Location</a></li>
+                            <li><a href="./categoryView">Category</a></li>
+                            <li><a href="./subcategoryView">Sub_Category</a></li>
+                            
+                            </ul>
+                    </li>
+                        
+                        <li><a href="#">Report</a>
+                        <ul class="dropdown">
+                            <li><a href="/Author_report">Author</a></li>
+                            <li><a href="/User_report">User</a></li>
+                            <li><a href="/piechart_sales">Sales</a></li>
+                        </ul>
+                        <li><a href="/feedbackview">Feedback</a></li>
+                    </ul>
+                </nav>
+                <div id="mobile-menu-wrap"></div>
+            </div>
+        </div>
+    </header>
+    <!-- Header End -->  

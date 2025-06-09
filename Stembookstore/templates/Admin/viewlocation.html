@@ -1,0 +1,59 @@
+{%load static%}
+<script src="{% static 'css/jquery-3.6.0.min.js'%}"></script>
+<script>
+    $(document).ready(function(){
+        $.ajaxSetup({
+            headers:{"X-CSRFToken":'{{csrf_token}}'}
+        });
+        alert("a")
+        $('#ddlDistrict').change(function()
+    {
+        alert("a")
+        var c=$(this).val();
+        alert(c)
+        $.ajax({
+            type:"POST",
+            url:'{% url "filllocation" %}',
+            data: { q : $(this).val()},
+            dataType:"json",
+            success:function(data){
+                $('#locations').empty();
+                var opt=$('<option/>');
+                opt.val(0);
+                opt.text('--select--');
+                $('#locations').append(opt);
+                // s=1
+                $.each(data,function(key,val){
+                    var opt=$('<option />')
+                    opt.val(val.LocationId);
+                    opt.text(val.Location);
+                    $('#locations').append(opt);
+                    var id=val.LocationId;
+
+                    var row = '<tr> <td>'+ s++ + '</td>'+'<td>'+val.Location +'</td>'+
+                        '<td class ="text-danger"><a href="'+deleteurl+'"Delete</a></td>'+'</tr>';
+                            $('#locations').append(row);
+                            alert(row);
+
+                });
+            }
+        });
+
+    })
+})
+    </script>
+<div>
+    <div>
+        <select name="ddlDistrict" id="ddlDistrict" class="form-control">
+            <option value="">Select District</option>
+            {% for d in District%}
+            <option value="{{d.DistrictId}}">{{d.District}}</option>
+            {%endfor%}
+        </select><br>
+        <div class="col-12">
+            <label for="inputName" class="form-label"> Location</label>
+            <select name="locations" id="locations">
+                <option value="0">--select--</option>
+            </select>
+    </div>
+</div>

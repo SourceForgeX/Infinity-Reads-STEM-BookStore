@@ -1,0 +1,28 @@
+{%load static%}
+{%include 'Admin/header.html'%}
+<!-- Register Section Begin -->
+<div class="register-login-section spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 offset-lg-3">
+                <div class="login-form">
+                    <h2>Category</h2>
+                    <form action="{%url 'categoryView'%}"method="POST">
+                        {% csrf_token %}
+                        <div class="group-input">
+                            <label for="Category">Category</label>
+                            <input type="text" id="Category" name="txt_Category">
+                        </div>
+                        
+                        <button type="submit" class="site-btn login-btn">Register</button>
+                    </form>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Register Form Section End -->
+
+
+

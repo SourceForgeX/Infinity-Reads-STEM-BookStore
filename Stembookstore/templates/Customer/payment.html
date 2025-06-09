@@ -1,0 +1,22 @@
+{%load static%}
+{%include 'Customer/header.html'%}
+
+<form action="{% url 'placeorder' id=booking.masterid  %}" method="post">
+    {% csrf_token %}
+       <table class="table table-bordered table-condensed">
+                    <tr>
+               
+                   <th>Total Amount</th><td><b style="color:black;">{{grandtotal}}</b></td></tr>
+                    <input type="hidden" value="{{grandtotal}}" name="gtotal">
+                   <tr><th>Card No</th><td><input type="number" name="cardno" placeholder="CardNo"></td></tr>
+                      <tr><th>Card Name</th><td><input type="text" name="cardname" placeholder="CardName"></td></tr>
+                   <tr><th>CVV</th><td><input type="number" name="cvv" placeholder="CVV"></td></tr>
+           <tr><th>Delivery address</th><td><textarea name="Deliveryaddress">{{cob.address}}</textarea></td></tr>
+                    <tr>  <th></th><td><input type="submit" value="Make Payment"></td>
+     
+                </tr>
+     
+                </table><br/>
+     
+          </form>
+          {%include 'Customer/footer.html'%}

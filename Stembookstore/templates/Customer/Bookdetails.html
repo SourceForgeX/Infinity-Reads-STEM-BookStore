@@ -1,0 +1,307 @@
+{%load static%}
+{%include 'Customer/header.html'%}
+    <!-- Breadcrumb Section Begin -->
+    <div class="breacrumb-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb-text product-more">
+                        <a href="/index"><i class="fa fa-home"></i> Home</a>
+                        <a href="/listofbooksview">Book</a>
+                        <span>Details</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb Section Begin -->
+
+    <!-- Product Shop Section Begin -->              
+
+    <section class="product-shop spad page-details">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="filter-widget">
+                        <h4 class="fw-title">Categories</h4>
+                            <ul class="filter-catagories">
+                                {% for i in Category %}
+                                <li><a href="{%url 'CategoryBookdetails' id=i.CategoryId%}">{{i.Category}}</a></li>
+                            {%endfor%}
+
+                            </ul>
+                    </div>                 
+                    <div class="filter-widget">
+                        <h4 class="fw-title">Books</h4>
+                        <ul class="filter-catagories">
+                            <li><a href="/listofbooksview">New</a></li>
+                            <li><a href="/listofsecondbooksview">Second Hand</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-9">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="product-pic-zoom">
+                                <img class="product-big-img" src="{{data.Bookimg.url}}" alt="">
+                                <div class="zoom-icon">
+                                    <i class="fa fa-search-plus"></i>
+                                </div>
+                            </div>
+                            <div class="product-thumbs">
+                                <div class="product-thumbs-track ps-slider owl-carousel">
+                                    <div class="pt active" data-imgbigurl="img/product-single/product-1.jpg"><img
+                                            src="img/product-single/product-1.jpg" alt=""></div>
+                                    <div class="pt" data-imgbigurl="img/product-single/product-2.jpg"><img
+                                            src="img/product-single/product-2.jpg" alt=""></div>
+                                    <div class="pt" data-imgbigurl="img/product-single/product-3.jpg"><img
+                                            src="img/product-single/product-3.jpg" alt=""></div>
+                                    <div class="pt" data-imgbigurl="img/product-single/product-3.jpg"><img
+                                            src="img/product-single/product-3.jpg" alt=""></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="product-details">
+                                <div class="pd-title">
+                                    <span>{{data.Publisher}}</span>
+                                    <h3>{{data.BookName}}</h3>
+                                    <a href="#" class="heart-icon"><i class="icon_heart_alt"></i></a>
+                                </div>
+                                <div class="pd-rating">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star-o"></i>
+                                    <span>(5)</span>
+                                </div>
+                                <div class="pd-desc">
+                                    <p>{{data.description}}</p>
+                                    <h4>{{data.price}} <span>{{data.MRP}}</span></h4>
+                                </div>
+                                
+                                <div class="pd-size-choose">
+                                    
+                                    
+                                </div>
+                                <div class="quantity">
+                                    <form action="{%url 'add_to_cart' data.Bid%}"method="POST">
+                                        {% csrf_token %}
+                                   
+                                    
+                                    
+                                    <input type="submit" class="primary-btn pd-cart" name="cart" value="Add to Cart">
+                                    </form>
+                                </div>
+
+                                
+
+                                <ul class="pd-tags">
+                                    <li><span>CATEGORIES</span>: {{data.maincategory}},{{data.Sub_Category}}</li>
+                                    
+                                </ul>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-tab">
+                        <div class="tab-item">
+                            <ul class="nav" role="tablist">
+                                <li>
+                                    <a class="active" data-toggle="tab" href="#tab-1" role="tab">DESCRIPTION</a>
+                                </li> 
+                                <li>
+                                    <a data-toggle="tab" href="#tab-2" role="tab">SPECIFICATIONS</a>
+                                </li>
+                                <li>
+                                    <a data-toggle="tab" href="#tab-3" role="tab">Customer Reviews </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="tab-item-content">
+                            <div class="tab-content">
+                                <div class="tab-pane fade-in active" id="tab-1" role="tabpanel">
+                                    <div class="product-content">
+                                        <div class="row">
+                                            <div class="col-lg-7">
+                                                <h5>Introduction</h5>
+                                                <p>{{data.description}} </p>
+                                                
+                                            </div> 
+                                            <div class="col-lg-5">
+                                                <img src="img/product-single/tab-desc.jpg" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="tab-2" role="tabpanel">
+                                    <div class="specification-table">
+                                        <table>
+                                            <tr>
+                                                <td class="p-catagory">Customer Rating</td>
+                                                <td>
+                                                    <div class="pd-rating">
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star-o"></i>
+                                                        <span>(5)</span>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="p-catagory">Price</td>
+                                                <td>
+                                                    <div class="p-price">{{data.price}}</div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="p-catagory">Author</td>
+                                                <td>
+                                                    <div class="p-price">{{data.Author}}</div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="p-catagory">Publisher</td>
+                                                <td>
+                                                    <div class="p-price">{{data.Publisher}}</div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="p-catagory">Edition</td>
+                                                <td>
+                                                    <div class="p-size">{{data.Edition}}</div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="p-catagory">Year Of Publish</td>
+                                                <td>
+                                                    <div class="p-price">{{data.year}}</div>
+                                                </td>
+                                            </tr>
+                                            
+                                            
+                                            <tr>
+                                                <td class="p-catagory">No of pages</td>
+                                                <td>
+                                                    <div class="p-weight">{{data.noofpages}}</div>
+                                                </td>
+                                            </tr>
+                                            
+                                          
+                                            <tr>
+                                                <td class="p-catagory">Language</td>
+                                                <td>
+                                                    <div class="p-code">{{data.language}}</div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="tab-3" role="tabpanel">
+                                    <div class="customer-review-option">
+                                        
+                                        <div class="comment-option">
+                                            <div class="co-item">
+                                                <div class="avatar-pic">
+                                                    
+                                                </div>
+                                                <div class="avatar-text">
+                                                    {% for f in dataset %}
+                                                    <h5>{{f.FName}}</h5>
+                                                    <div class="at-reply">{{f.Message}}</div>
+                                                {%endfor%}
+                                                </div>
+                                            </div>
+                                            
+                                               
+                                                   
+                                        
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Product Shop Section End -->
+
+    <!-- Partner Logo Section Begin -->
+    <div class="partner-logo">
+        <div class="container">
+            <div class="logo-carousel owl-carousel">
+                <div class="logo-item">
+                    <div class="tablecell-inner">
+                        <img src="img/logo-carousel/logo-1.png" alt="">
+                    </div>
+                </div>
+                <div class="logo-item">
+                    <div class="tablecell-inner">
+                        <img src="img/logo-carousel/logo-2.png" alt="">
+                    </div>
+                </div>
+                <div class="logo-item">
+                    <div class="tablecell-inner">
+                        <img src="img/logo-carousel/logo-3.png" alt="">
+                    </div>
+                </div>
+                <div class="logo-item">
+                    <div class="tablecell-inner">
+                        <img src="img/logo-carousel/logo-4.png" alt="">
+                    </div>
+                </div>
+                <div class="logo-item">
+                    <div class="tablecell-inner">
+                        <img src="img/logo-carousel/logo-5.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Partner Logo Section End -->
+{%include 'Customer/footer.html'%}
+<style>
+    .quantity {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    .qty-btn {
+        width: 30px;
+        height: 30px;
+        text-align: center;
+        font-size: 18px;
+        cursor: pointer;
+        border: none;
+        background-color: #f0f0f0;
+    }
+    .qty-input {
+        width: 40px;
+        text-align: center;
+        font-size: 16px;
+        border: 1px solid #ccc;
+    }
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const qtyInput = document.querySelector(".qty-input");
+        const incBtn = document.querySelector(".inc");
+        const decBtn = document.querySelector(".dec");
+
+        incBtn.addEventListener("click", () => {
+            qtyInput.value = parseInt(qtyInput.value) + 1;
+        });
+
+        decBtn.addEventListener("click", () => {
+            if (qtyInput.value > 1) {
+                qtyInput.value = parseInt(qtyInput.value) - 1;
+            }
+        });
+    });
+</script>

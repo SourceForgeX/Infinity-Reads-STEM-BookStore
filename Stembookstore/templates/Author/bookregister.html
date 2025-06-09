@@ -1,0 +1,218 @@
+{%load static%}
+
+
+<script src="{% static 'css/jquery-3.6.0.min.js'%}"></script>
+<script>
+    $(document).ready(function(){
+        $.ajaxSetup({
+            headers:{"X-CSRFToken":'{{csrf_token}}'}
+        });
+       // alert("a")
+        
+        $('#ddlCategory').change(function() {
+            var c = $(this).val();
+            
+            //alert("Selected Value: " + c);
+
+
+            $.ajax({
+          
+                type:"POST",
+                url:'{% url "fillSubcategory" %}',
+                data: { q : $(this).val()},
+                dataType:"json",
+                success:function(data){
+                    console.log(data); // Add this line to debug the returned data
+                    $('#ddlsubCategory').empty();
+                    var opt=$('<option/>');
+                    opt.val(0);
+                    opt.text('--select sub category --');
+                    $('#ddlsubCategory').append(opt);
+                    s=1;
+                    $.each(data, function(key, val){
+                   
+                        var opt=$('<option />');
+                        opt.val(val.Sub_Id);
+                        opt.text(val.Sub_Category);
+                        $('#ddlsubCategory').append(opt);
+                        
+                        
+                    });
+                }
+                
+            });
+        });
+        
+       
+      
+
+    })
+
+    </script>
+
+
+{% include "Author/header.html" %}
+
+
+<!DOCTYPE html>
+<html lang="zxx">
+
+    <!-- Breadcrumb Section Begin -->
+    <div class="breacrumb-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb-text product-more">
+                        <a href="/Authorindex"><i class="fa fa-home"></i> Home</a>
+                        
+                        <span>Registration</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb Section Begin -->
+
+    <!-- Shopping Cart Section Begin -->
+    <section class="checkout-section spad">
+        <div class="container">
+            <form action="{% url 'bookregistration' %}" method="POST" class="checkout-form" enctype="multipart/form-data">
+             {%csrf_token%}
+                        
+                        <h4>Book Details</h4>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <label for="fir">Book Name<span>*</span></label>
+                                <input type="text" id="fir" name="txt_bookname">
+                            </div>
+                            <div class="col-lg-12">
+                                <label for="street">Book Description<span>*</span></label>
+                                <input type="text" id="street" class="street-first"name="txt_bookdescription">
+                            
+                            </div>
+                           
+                            <div class="col-lg-6">
+                                
+                                <select class="form-control"name="ddlCategory" id="ddlCategory">
+                                    <option value="0">Choose Category</option>
+                                    {%for c in Category%} 
+                                    <option value="{{c.CategoryId}}">{{c.Category}}</option>
+                                    {%endfor%}
+                                </select>
+                            </div><br><br>
+                            <div class="col-lg-6">
+                                <select class="form-control" name="ddlsubCategory" id="ddlsubCategory" >
+                                    <option value='0'>Choose Sub_Category</option>
+                                </select>
+                            </div>      <br><br>
+                            <div class="col-lg-6">
+                                <label for="last">Author<span>*</span></label>
+                                <input type="text" id="fir" name="txt_Author">
+                                    
+                            </div>
+                            <div class="col-lg-6">
+                                <label for="street">Language<span>*</span></label>
+                                <input type="text" id="street" class="street-first" name="txt_Language">
+                            
+                            </div>
+                            
+                            
+                            <div class="col-lg-6">
+                                <label for="zip">Number of Pages</label>
+                                <input type="text" id="zip" name="txt_numberofpages"
+                                placeholder="Enter Number of Pages:" required 
+                                pattern="^[0-9]+$" 
+                                title="Must be a  number">
+                            </div>
+                            <div class="col-lg-6">
+                                <label for="town">ISBN<span>*</span></label>
+                                <input type="text" id="town" name="txt_ISBN">
+                            </div>
+                            
+                            <div class="col-lg-6">
+                                <label for="phone">MRP<span>*</span></label>
+                                <input type="text" id="phone" name="txt_MRP">
+                            </div>
+                            <div class="col-lg-6">
+                                <label for="phone">Price<span>*</span></label>
+                                <input type="text" id="phone" name="txt_price">
+                            </div>
+                            <div class="col-lg-6">
+                                <label for="email">Year<span>*</span></label>
+                                <input type="date" id="email" name="txt_year">
+                            </div>
+                        <div class="col-lg-6">
+                            <label for="email">Publisher<span>*</span></label>
+                            <input type="text" id="email" name="Publisher">
+                        </div>
+                        <div class="col-lg-6">
+                            <label for="email">Edition<span>*</span></label>
+                            <input type="text" id="email" name="Edition">
+                        </div>
+                       
+                            <div class="col-lg-6">
+                                <label for="phone">Choose your file<span>*</span></label>
+                                <input type="file" id="phone" name="book_file">
+                            </div>
+                            <div class="col-lg-6">
+                                <label for="phone">Number of Books<span>*</span></label>
+                                <input type="text" id="phone" name="book_number"
+                                placeholder="Enter Number of Books:" required 
+                                pattern="^[0-9]+$" 
+                                title="Must be a  number">
+                            </div>
+                            
+                            <div class="order-btn">
+                                <button type="submit" class="site-btn place-btn">Register</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </form>
+        </div>
+    </section>
+    <!-- Shopping Cart Section End -->
+
+    <!-- Partner Logo Section Begin -->
+    <div class="partner-logo">
+        <div class="container">
+            <div class="logo-carousel owl-carousel">
+                <div class="logo-item">
+                    <div class="tablecell-inner">
+                        <img src="img/logo-carousel/logo-1.png" alt="">
+                    </div>
+                </div>
+                <div class="logo-item">
+                    <div class="tablecell-inner">
+                        <img src="img/logo-carousel/logo-2.png" alt="">
+                    </div>
+                </div>
+                <div class="logo-item">
+                    <div class="tablecell-inner">
+                        <img src="img/logo-carousel/logo-3.png" alt="">
+                    </div>
+                </div>
+                <div class="logo-item">
+                    <div class="tablecell-inner">
+                        <img src="img/logo-carousel/logo-4.png" alt="">
+                    </div>
+                </div>
+                <div class="logo-item">
+                    <div class="tablecell-inner">
+                        <img src="img/logo-carousel/logo-5.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Partner Logo Section End -->
+
+    {% include "Customer/footer.html" %}
+    
+</html>
+
+
+
+
+

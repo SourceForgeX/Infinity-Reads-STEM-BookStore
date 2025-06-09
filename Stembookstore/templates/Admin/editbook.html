@@ -1,0 +1,223 @@
+{%load static%}
+
+<script src="{% static 'css/jquery-3.6.0.min.js'%}"></script>
+<script>
+    $(document).ready(function(){
+        $.ajaxSetup({
+            headers:{"X-CSRFToken":'{{csrf_token}}'}
+        });
+       // alert("a")
+        
+        $('#ddlCategory').change(function() {
+            var c = $(this).val();
+            
+            //alert("Selected Value: " + c);
+
+
+            $.ajax({
+          
+                type:"POST",
+                url:'{% url "fillSubcategory" %}',
+                data: { q : $(this).val()},
+                dataType:"json",
+                success:function(data){
+                    $('#ddlsubCategory').empty();
+                    var opt=$('<option/>');
+                    opt.val(0);
+                    opt.text('--select sub category --');
+                    $('#ddlsubCategory').append(opt);
+                    s=1
+                    //alert(s)
+                    //alert(data)
+                    $.each(data,function(key,val){
+                        var opt=$('<option />')
+                        opt.val(val.Sub_Id);
+                        opt.text(val.Sub_Category);
+                        
+                        $('#ddlsubCategory').append(opt);
+                        var id=val.Sub_Id;
+    
+                        var row = '<tr> <td>'+ s++ + '</td>'+'<td>'+val.Sub_Category +'</td>'+
+                            '<td class ="text-danger"><a href="'+deleteurl+'"Delete</a></td>'+'</tr>';
+                                $('#sub').append(row);
+                                alert(row);
+    
+                    });
+                }
+            });
+        });
+        
+       
+      
+
+    })
+
+    </script>
+
+
+
+    {% include "Admin/header.html" %}
+
+<!DOCTYPE html>
+<html lang="zxx">
+
+    <!-- Breadcrumb Section Begin -->
+    <div class="breacrumb-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb-text product-more">
+                        <a href="/adminindex"><i class="fa fa-home"></i> Home</a>
+                        <a href="/list_book">List of Books</a>
+                        <span>Edit Books</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb Section Begin -->
+
+    <!-- Shopping Cart Section Begin -->
+    <section class="checkout-section spad">
+        <div class="container">
+            <form action="{% url 'editbooks' data.Bid %}" method="POST" class="checkout-form" enctype="multipart/form-data">
+                {% csrf_token %}
+                
+                <h4>Book Details</h4>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <label for="bookname">Book Name<span>*</span></label>
+                        <input type="text" id="bookname" name="txt_bookname" value="{{ data.BookName }}">
+                    </div>
+                    <div class="col-lg-12">
+                        <label for="author">Author<span>*</span></label>
+                        <input type="text" id="author" name="txt_Author" value="{{ data.Author }}">
+                    </div>
+                    <div class="col-lg-12">
+                        <label for="street">Description<span>*</span></label>
+                        <input type="text" id="street" class="street-first"name="txt_description" value="{{data.description}}">
+                    
+                    </div>
+                            <div class="col-lg-6">
+                                <label for="author">Category<span>*</span></label>
+                                <select class="form-control"name="ddlCategory" id="ddlCategory">
+                                    <option value="0">{{data.maincategory}}</option>
+                                    {%for c in Category%} 
+                                    <option value="{{c.CategoryId}}">{{c.Category}}</option>
+                                    {%endfor%}
+                                </select>
+                            </div>
+                           
+                            <div class="col-lg-6">
+                                <label for="author">SubCategory<span>*</span></label>
+                                <select class="form-control" name="ddlsubCategory" id="ddlsubCategory" >
+                                    <option value='0'>{{data.Sub_Category}}</option>
+                                </select>
+                            </div>      <br><br>
+                            
+                            
+                            <div class="col-lg-6">
+                                <label for="street">Language<span>*</span></label>
+                                <input type="text" id="street" class="street-first"name="txt_Language" value="{{data.language}}">
+                            
+                            </div>
+                            
+                            
+                            <div class="col-lg-6">
+                                <label for="zip">Number of Pages</label>
+                                <input type="text" id="zip" name="txt_numberofpages"value="{{data.noofpages}}">
+                            </div>
+                            
+                            <div class="col-lg-6">
+                                <label for="email">Year<span>*</span></label>
+                                <input type="date" id="email" name="txt_year"value="{{data.year}}">
+                            </div>
+                            <div class="col-lg-6">
+                                <label for="street">ISBN<span>*</span></label>
+                                <input type="text" id="street" class="street-first"name="TXT_ISBN" value="{{data.isbn}}">
+                            
+                            </div>
+                            <div class="col-lg-6">
+                                <label for="phone">MRP<span>*</span></label>
+                                <input type="text" id="phone" name="MRP"value="{{data.MRP}}">
+                            </div>
+                            <div class="col-lg-6">
+                                <label for="phone">Price<span>*</span></label>
+                                <input type="text" id="phone" name="txt_price"value="{{data.price}}">
+                            </div>
+                            
+                            <div class="col-lg-6">
+                            <label for="email">Publisher<span>*</span></label>
+                            <input type="text" id="email" name="Publisher"value="{{data.Publisher}}">
+                        </div>
+                        <div class="col-lg-6">
+                            <label for="email">Edition<span>*</span></label>
+                            <input type="text" id="email" name="Edition"value="{{data.Edition}}">
+                        </div>
+                        <div class="col-lg-6">
+                            <label for="email">Number of books<span>*</span></label>
+                            <input type="text" id="email" name="book_number"value="{{data.numberofbooks}}">
+                        </div>
+                        <div class="col-lg-6">
+                            <label for="book_file">Choose your file<span>*</span></label>
+                            <input type="file" id="book_file" name="book_file">
+                            
+                            {% if data.Bookimg %}
+                                <p>Current File: <a href="{{ data.Bookimg.url }}" target="_blank">View File</a></p>
+                            {% endif %}
+                        </div>
+                        </div>    
+                            <div class="order-btn">
+                                <button type="submit" class="site-btn place-btn">edit</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </form>
+        </div>
+    </section>
+    <!-- Shopping Cart Section End -->
+
+    <!-- Partner Logo Section Begin -->
+    <div class="partner-logo">
+        <div class="container">
+            <div class="logo-carousel owl-carousel">
+                <div class="logo-item">
+                    <div class="tablecell-inner">
+                        <img src="img/logo-carousel/logo-1.png" alt="">
+                    </div>
+                </div>
+                <div class="logo-item">
+                    <div class="tablecell-inner">
+                        <img src="img/logo-carousel/logo-2.png" alt="">
+                    </div>
+                </div>
+                <div class="logo-item">
+                    <div class="tablecell-inner">
+                        <img src="img/logo-carousel/logo-3.png" alt="">
+                    </div>
+                </div>
+                <div class="logo-item">
+                    <div class="tablecell-inner">
+                        <img src="img/logo-carousel/logo-4.png" alt="">
+                    </div>
+                </div>
+                <div class="logo-item">
+                    <div class="tablecell-inner">
+                        <img src="img/logo-carousel/logo-5.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Partner Logo Section End -->
+
+    
+    
+</html>
+
+
+
+
+
